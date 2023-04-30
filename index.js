@@ -48,7 +48,7 @@ inquirer
       const svgContent = generateSVG(answers);
   
       // Write the SVG content to a file
-      fs.writeFile('logo.svg', svgContent, (err) => {
+      fs.writeFile('examples/' + ${text} + '-' + ${shape}+'.svg', svgContent, (err) => {
         if (err) {
           console.log(err);
         } else {
