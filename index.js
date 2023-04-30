@@ -2,6 +2,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// Import open package and define openFile function
+async function openFile(filepath) {
+    const open = (await import('open')).default;
+    await open(filepath);
+  }
+
 // Begin user prompts using inquirer
 inquirer
   .prompt([
@@ -44,8 +50,26 @@ inquirer
           console.log(err);
         } else {
           console.log('Generated logo.svg');
-        }
-      });
+
+          inquirer
+          .prompt([
+            {
+              type: 'confirm',
+              message: 'Do you want to open the SVG?',
+              name: 'openFile',
+            },
+          ])
+          .then((answer) => {
+            // Open the README.md file if the user selects 'Yes'
+            if (answer.openFile) {
+              openFile('logo.svg').catch((err) => {
+                console.error('Error opening the file:', err);
+              });
+            } else {
+              console.log('File not opened.');
+            }
+          });
+    }
     });
   
   // Generate logo.svg from user responses

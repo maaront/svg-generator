@@ -3,9 +3,11 @@
   width="300" height="300"
   xmlns="http://www.w3.org/2000/svg">
    
-  <triangle cx="80" cy="80" r="80" fill="blue" />
   
-  <text x="80" y="100" font-size="60" text-anchor="middle" fill="red">ABC</text>
+          <polygon points="80,10 150,150 10,150" fill="blue" />
+         <!-- Insert the shape based on the user's choice -->
+  
+  <text x="80" y="100" font-size="60" text-anchor="middle" fill="black">ABC</text> <!-- Insert the text SVG element with the user's input -->
    
   </svg>
   
