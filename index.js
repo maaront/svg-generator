@@ -1,5 +1,9 @@
 // Import packages
 const inquirer = require('inquirer');
+// Add functionality to limit input characters
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
+
 const fs = require('fs');
 
 // Import open package and define openFile function
@@ -12,9 +16,10 @@ async function openFile(filepath) {
 inquirer
   .prompt([
     {
-      type: 'input',
+      type: 'maxlength-input',
       message: 'Add up to three characters of text. Leave blank for no text.',
       name: 'text',
+      maxLength: 3,
     },
     {
       type: 'input',
