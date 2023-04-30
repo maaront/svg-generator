@@ -5,7 +5,7 @@ const fs = require('fs');
 // Import open package and define openFile function
 async function openFile(filepath) {
     const open = (await import('open')).default;
-    await open(filepath);
+    await open(filepath, { url: true }); // Open file in default web browser
   }
 
 // Begin user prompts using inquirer
@@ -36,8 +36,6 @@ inquirer
         message: 'Add shape color (keyword or hexadecimal).',
         name: 'shapecolor',
       },
-
-
     ])
     // Fulfill the promise
     .then((answers) => {
@@ -60,7 +58,7 @@ inquirer
             },
           ])
           .then((answer) => {
-            // Open the README.md file if the user selects 'Yes'
+            // Open the logo.svg file if the user selects 'Yes'
             if (answer.openFile) {
               openFile('logo.svg').catch((err) => {
                 console.error('Error opening the file:', err);
@@ -71,6 +69,7 @@ inquirer
           });
     }
     });
+});
   
   // Generate logo.svg from user responses
   const generateSVG = ({
