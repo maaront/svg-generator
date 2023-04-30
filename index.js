@@ -48,7 +48,7 @@ inquirer
       const svgContent = generateSVG(answers);
   
       // Write the SVG content to a file
-      fs.writeFile('examples/' + ${text} + '-' + ${shape}+'.svg', svgContent, (err) => {
+      fs.writeFile('logo.svg', svgContent, (err) => {
         if (err) {
           console.log(err);
         } else {
@@ -94,9 +94,7 @@ inquirer
           break;
         case 'triangle':
           // Set the shapeElement to triangle
-          shapeElement = `
-            <polygon points="100,20 200,200 20,200" fill="${shapecolor}" />
-          `;
+          shapeElement = `<polygon points="100,20 200,200 20,200" fill="${shapecolor}" />`;
           break;
         case 'square':
           // Set the shapeElement to a rectangle
