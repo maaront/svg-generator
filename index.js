@@ -88,34 +88,31 @@ inquirer
   
     // Switch statement to handle different shape selections
     switch (shape) {
-      case 'circle':
-        // Set the shapeElement to circle
-        shapeElement = `<circle cx="80" cy="80" r="80" fill="${shapecolor}" />`;
-        break;
-      case 'triangle':
-        // Set the shapeElement to triangle
-        shapeElement = `
-          <polygon points="80,10 150,150 10,150" fill="${shapecolor}" />
-        `;
-        break;
-      case 'square':
-        // Set the shapeElement to a rectangle
-        shapeElement = `<rect x="10" y="10" width="140" height="140" fill="${shapecolor}" />`;
-        break;
-      default:
-        // Throw an error if an invalid shape is selected
-        throw new Error('Invalid shape selected.');
-    }
+        case 'circle':
+          // Set the shapeElement to circle
+          shapeElement = `<circle cx="150" cy="100" r="75" fill="${shapecolor}" />`;
+          break;
+        case 'triangle':
+          // Set the shapeElement to triangle
+          shapeElement = `
+            <polygon points="100,20 200,200 20,200" fill="${shapecolor}" />
+          `;
+          break;
+        case 'square':
+          // Set the shapeElement to a rectangle
+          shapeElement = `<rect x="30" y="30" width="240" height="140" fill="${shapecolor}" />`;
+          break;
+      }
   
     // Return the final SVG string with the shape and text elements
     return `
   <svg version="1.1"
-  width="300" height="300"
+  width="300" height="200"
   xmlns="http://www.w3.org/2000/svg">
    
   ${shapeElement} <!-- Insert the shape based on the user's choice -->
   
-  <text x="80" y="100" font-size="60" text-anchor="middle" fill="${textcolor}">${text}</text> <!-- Insert the text SVG element with the user's input -->
+  <text x="150" y="110" font-size="50" text-anchor="middle" fill="${textcolor}">${text}</text> <!-- Insert the text SVG element with the user's input -->
    
   </svg>
   `;
