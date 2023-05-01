@@ -13,35 +13,37 @@ async function openFile(filepath) {
   }
 
 // Begin user prompts using inquirer
-inquirer
-  .prompt([
-    {
-      type: 'maxlength-input',
-      message: 'Add up to three characters of text. Leave blank for no text.',
-      name: 'text',
-      maxLength: 3,
-    },
-    {
-      type: 'input',
-      message: 'Add text color (keyword or hexadecimal). Leave blank for no text.',
-      name: 'textcolor',
-    },
-    {
-      type: 'list',
-      message: 'Choose a shape',
-      name: 'shape',
-      choices: [
-        'circle',
-        'triangle',
-        'square',
-      ],
-    },
-    {
+const runPrompts = () => {
+    inquirer
+    .prompt([
+        {
+        type: 'maxlength-input',
+        message: 'Add up to three characters of text. Leave blank for no text.',
+        name: 'text',
+        maxLength: 3,
+        },
+        {
         type: 'input',
-        message: 'Add shape color (keyword or hexadecimal).',
-        name: 'shapecolor',
-      },
-    ])
+        message: 'Add text color (keyword or hexadecimal). Leave blank for no text.',
+        name: 'textcolor',
+        },
+        {
+        type: 'list',
+        message: 'Choose a shape',
+        name: 'shape',
+        choices: [
+            'circle',
+            'triangle',
+            'square',
+        ],
+        },
+        {
+            type: 'input',
+            message: 'Add shape color (keyword or hexadecimal).',
+            name: 'shapecolor',
+        },
+        ])
+    };
     // Fulfill the promise
     .then((answers) => {
       // Generate the SVG content based on the user's answers
@@ -76,6 +78,9 @@ inquirer
     });
 });
   
+// Export the runPrompts function
+module.exports.runPrompts = runPrompts;
+
   // Generate logo.svg from user responses
   const generateSVG = ({
     text,

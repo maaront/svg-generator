@@ -1,3 +1,3 @@
-const { runPrompts } = require('./svg-generator');
+const { runPrompts } = require('./svggenerator');
 
 runPrompts();
