@@ -115,3 +115,6 @@ inquirer
   </svg>
   `;
   };
+
+// Export the generateSVG function
+module.exports.generateSVG = generateSVG;
