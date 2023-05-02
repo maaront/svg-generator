@@ -3,14 +3,17 @@ const inquirer = require('inquirer');
 // Add functionality to limit input characters
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
-
 const fs = require('fs');
+const path = require('path');
 
 // Import open package and define openFile function
 async function openFile(filepath) {
     const open = (await import('open')).default;
     await open(filepath, { url: true }); // Open file in default web browser
 }
+
+// Define the output directory
+const outputDir = 'examples';
 
 // Begin user prompts using inquirer
 const runPrompts = () => {
@@ -48,9 +51,11 @@ const runPrompts = () => {
     .then((answers) => {
       // Generate the SVG content based on the user's answers
       const svgContent = generateSVG(answers);
+        // Generate a file name based on the user's answers
+      const fileName = `${answers.text}-${answers.textcolor}-${answers.shape}-${answers.shapecolor}.svg`;
 
       // Write the SVG content to a file
-      fs.writeFile('logo.svg', svgContent, (err) => {
+      fs.writeFile(path.join(outputDir, fileName), svgContent, (err) => {
           if (err) {
               console.log(err);
           } else {
